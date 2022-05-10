@@ -26,7 +26,6 @@ const (
 	lwarn  level = "WARN"
 	lerror level = "ERROR"
 	lfatal level = "FATAL"
-	lclean level = ""
 
 	jtsf string = "2006/01/02 15:04:05.000000"
 )
