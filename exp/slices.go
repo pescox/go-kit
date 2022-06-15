@@ -17,9 +17,9 @@ func Contains[T types.Basic](slices []T, e T) bool {
 }
 
 func Distinct[T types.Basic](slices []T) []T {
-	var keys map[T]bool
-	for _, e := range slices {
-		keys[e] = true
+	keys := map[T]bool{}
+	for _, k := range slices {
+		keys[k] = true
 	}
 	result := make([]T, len(keys))
 	for k := range keys {
@@ -41,4 +41,14 @@ func Reverse[T types.Basic](s []T) {
 	for i := l/2 - 1; i >= 0; i-- {
 		s[i], s[l-i-1] = s[l-i-1], s[i]
 	}
+}
+
+func Filter[T any](s []T, f func(t T) bool) []T {
+	res := []T{}
+	for i := range s {
+		if f(s[i]) {
+			res = append(res, s[i])
+		}
+	}
+	return res
 }
